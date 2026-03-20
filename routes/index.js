@@ -20,6 +20,11 @@ const upload = require('../middlewares/multer');
 // Rota POST para processar o form de cadastro
 router.post('/register', userController.register);
 
+// Rota para exibir o formulário de login
+router.get('/login', (req, res) => {
+   res.render('login', { title: 'Entrar' });
+});
+
 // Rota para processar o formulário de login
 router.post('/login', userController.login);
 

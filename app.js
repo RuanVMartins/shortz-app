@@ -25,12 +25,13 @@ app.use(cookieParser());
 app.use(session({
   secret: process.env.SESSION_SECRET || 'shortz-secret',
   resave: false,
-  saveUninitialized: false
+  saveUninitialized: false,
+  cookie: { maxAge: 1000 * 60 * 60 * 24 } // 1 dia
 }));
 
 app.use(flash());
 app.use((req, res, next) =>{
-  res.locals.message = req.flash();
+  res.locals.messages = req.flash();
   next();
 });
 
